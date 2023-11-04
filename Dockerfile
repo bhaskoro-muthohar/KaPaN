@@ -11,7 +11,8 @@ COPY . .
 RUN python scripts/init_db.py
 RUN python scripts/load_data.py
 
-EXPOSE 8501
 EXPOSE 80
 
-CMD ["streamlit", "run", "app.py"]
+ENV STREAMLIT_SERVER_PORT=80
+
+CMD ["streamlit", "run", "app.py", "--server.port=80"]
