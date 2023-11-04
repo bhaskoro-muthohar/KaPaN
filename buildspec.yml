@@ -3,17 +3,16 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "Starting the pre-build phase..."
+      - echo "Pre-build phase"
   build:
     commands:
-      - echo "Starting the build phase..."
+      - echo "Build phase"
   post_build:
     commands:
-      - echo "Starting the post-build phase..."
-      - echo "Build completed on `date`"
+      - echo "Post-build phase"
+      - echo "Post-build completed on `date`"
 
 artifacts:
   files:
     - '**/*'
-  discard-paths: yes
-  base-directory: '.'
+  discard-paths: no
