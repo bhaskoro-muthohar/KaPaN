@@ -7,8 +7,6 @@ phases:
   build:
     commands:
       - echo "Build phase"
-      - echo "Zipping the contents with the Dockerfile at the root."
-      - zip -r application.zip .
   post_build:
     commands:
       - echo "Post-build phase"
@@ -16,5 +14,5 @@ phases:
 
 artifacts:
   files:
-    - application.zip
+    - '**/*'
   discard-paths: no
