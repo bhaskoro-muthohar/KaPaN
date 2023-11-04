@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+  pre_build:
+    commands:
+      - echo Installing source dependencies...
+      - pip install --upgrade pip
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo No build commands are needed because we use Elastic Beanstalk's Docker platform.
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo No post-build commands are needed.
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: '/usr/src/app'
