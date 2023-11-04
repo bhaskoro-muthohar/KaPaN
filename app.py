@@ -29,7 +29,6 @@ selected_crops = st.multiselect('Select crops to display', options=[task['Task']
 
 filtered_crop_data = [task for task in crop_data if task['Task'] in selected_crops]
 
-# Generate the Gantt chart with the filtered data
 fig = ff.create_gantt(filtered_crop_data, index_col='Resource', title='Crop Calendar', show_colorbar=True, group_tasks=True)
 
 annotations = []
@@ -37,7 +36,6 @@ for input in user_inputs:
     if input['Task'] in selected_crops:
         task_index = [i for i, task in enumerate(filtered_crop_data) if task['Task'] == input['Task']][0]
         ay_offset = adjust_annotation_position(annotations, {'Date': input['Date'], 'Task Index': task_index})
-        # Add hover text to the annotation
         hover_text = f"{input['Event']} on {input['Date']}"
         annotations.append(dict(
             x=input['Date'],
@@ -59,26 +57,29 @@ fig.update_layout(hovermode='closest')
 
 st.plotly_chart(fig, use_container_width=True)
 
-# Connect to DuckDB and retrieve data
 conn = duckdb.connect('db/duckdb_file.duckdb')
 
-# Date filter widgets
-start_date = st.date_input('Start date', value=pd.to_datetime('2022-01-01'))
-end_date = st.date_input('End date', value=pd.to_datetime('2022-01-31'))
+query_date_range = "SELECT MIN(date) as min_date, MAX(date) as max_date FROM precipitation"
+date_range = conn.execute(query_date_range).fetchdf()
+min_date = pd.to_datetime(date_range['min_date'].iloc[0]).date()
+max_date = pd.to_datetime(date_range['max_date'].iloc[0]).date()
 
-# Fetch data within the specified date range
+st.markdown('**Precipitation Map - Java Island**')
+selected_date = st.slider('Select date', min_value=min_date, max_value=max_date, value=min_date, format='YYYY-MM-DD')
+
+# Fetch data for the selected date
 query = f"""
 SELECT latitude, longitude, value, date
 FROM precipitation
-WHERE date BETWEEN '{start_date}' AND '{end_date}'
+WHERE date = '{selected_date}'
 AND latitude BETWEEN -8.5 AND -6.0
 AND longitude BETWEEN 105.0 AND 114.0
 """
 precipitation_data = conn.execute(query).fetchdf()
 
+# Close the database connection
 conn.close()
 
-# Check if the data is loaded correctly
 if not precipitation_data.empty:
     fig_map = px.scatter_geo(
         precipitation_data,
@@ -86,8 +87,7 @@ if not precipitation_data.empty:
         lon='longitude',
         color='value',
         hover_name='date',
-        projection='natural earth',
-        title='Precipitation Map - Java Island'
+        projection='natural earth'
     )
 
     fig_map.update_geos(
@@ -95,9 +95,9 @@ if not precipitation_data.empty:
         lonaxis_range=[105, 114],  # Longitude range for Java
         lataxis_range=[-8.5, -6],  # Latitude range for Java
         center={"lat": -7.25, "lon": 109.5},  # Center of the map
-        projection_scale=7
+        projection_scale=0.9
     )
 
     st.plotly_chart(fig_map, use_container_width=True)
 else:
-    st.write("No data available for the selected date range.")
+    st.write("No data available for the selected date.")
