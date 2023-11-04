@@ -1,23 +1,22 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.10
   pre_build:
     commands:
-      - echo Installing source dependencies...
-      - pip install --upgrade pip
+      - echo "Pre-build phase"
   build:
     commands:
-      - echo Build started on `date`
-      - echo No build commands are needed because we use Elastic Beanstalk's Docker platform.
+      - echo "Build phase"
+      - echo "Creating a zip with the Dockerfile at the root."
+      - git archive --format=zip HEAD > application.zip
+      - unzip application.zip -d unpacked
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo No post-build commands are needed.
+      - echo "Post-build phase"
+      - echo "Post-build completed on `date`"
 
 artifacts:
   files:
     - '**/*'
-  base-directory: '/usr/src/app'
+  discard-paths: yes
+  base-directory: 'unpacked'
