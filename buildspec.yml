@@ -7,9 +7,8 @@ phases:
   build:
     commands:
       - echo "Build phase"
-      - echo "Creating a zip with the Dockerfile at the root."
-      - git archive --format=zip HEAD > application.zip
-      - unzip application.zip -d unpacked
+      - echo "Zipping the contents with the Dockerfile at the root."
+      - zip -r application.zip .
   post_build:
     commands:
       - echo "Post-build phase"
@@ -17,6 +16,5 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
-  discard-paths: yes
-  base-directory: 'unpacked'
+    - application.zip
+  discard-paths: no
