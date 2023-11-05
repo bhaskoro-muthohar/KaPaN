@@ -51,4 +51,5 @@ This package was created with Cookiecutter and the `gerardrbentley/cookiecutter-
 
 - Cookiecutter: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
 - `gerardrbentley/cookiecutter-streamlit`: [https://github.com/gerardrbentley/cookiecutter-streamlit](https://github.com/gerardrbentley/cookiecutter-streamlit)
+- [TODO] Credits to Open Data Jabar
 - [TODO] Credits to Giovanni
