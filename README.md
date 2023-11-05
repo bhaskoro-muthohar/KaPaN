@@ -1,6 +1,16 @@
-# KaPaN
+# [TBD] KaPaN
 
-Kalender Padi Nusantara
+[TBD] Kalender Padi Nusantara
+
+## Data Pre-processing
+
+### Data Sources
+All raw data are available under `data` directory, grouped by the source name. Everything under `data/giovanni` is downloaded from [Giovanni](https://giovanni.gsfc.nasa.gov/), everything under `data/opendatajabar` is from [Open Data Jabar](https://opendata.jabarprov.go.id/), etc.
+
+### Pre-processing Raw Data
+TODO
+
+---
 
 Built with ❤️ by [bhaskoro-muthohar](https://github.com/bhaskoro-muthohar)
 
