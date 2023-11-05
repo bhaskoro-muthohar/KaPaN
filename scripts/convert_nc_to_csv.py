@@ -1,4 +1,5 @@
 import pandas as pd
+import sys
 import time
 from netCDF4 import Dataset
 
@@ -9,7 +10,7 @@ METRICS_SHORTWAVENET = "shortwavenet"
 METRICS_TEMPERATURE = "temperature"
 METRICS_WINDSPEED = "windspeed"
 
-metrics = METRICS_HUMIDITYRELATIVE
+metrics = sys.argv[1]
 
 code = "unknown"
 if metrics == METRICS_HUMIDITY:
@@ -31,7 +32,7 @@ if metrics in (METRICS_HUMIDITY, METRICS_WINDSPEED):
   startdate = "2020-01-01"
   frequency = "MS" # month start
 
-data_dir = "data/{0}/".format(metrics)
+data_dir = "data/giovanni/{0}/".format(metrics)
 
 dates = pd.date_range(startdate, "2023-06-30", freq=frequency).strftime("%Y%m%d").tolist()
 
