@@ -1,6 +1,36 @@
-# KaPaN
+# [TBD] KaPaN
 
-Kalender Padi Nusantara
+[TBD] Kalender Padi Nusantara
+
+## Data Pre-processing
+
+### Data Sources
+All raw data are available under `data/` directory, grouped by the source name. Everything under `data/giovanni` is downloaded from [Giovanni](https://giovanni.gsfc.nasa.gov/), everything under `data/opendatajabar` is from [Open Data Jabar](https://opendata.jabarprov.go.id/), etc.
+
+### Pre-processing Raw Data
+Run following commands in console/terminal.
+```sh
+python scripts/convert_nc_to_csv.py humidityrelative
+python scripts/convert_nc_to_csv.py humidityspecific
+python scripts/convert_nc_to_csv.py precipitation
+python scripts/convert_nc_to_csv.py shortwavenet
+python scripts/convert_nc_to_csv.py temperature
+python scripts/convert_nc_to_csv.py windspeed
+```
+
+There will be a series of CSV files generated in each respective metrics directory, something like `humidityrelative_tab_20220701.csv`. After that, combining all those CSV files can done by running following commands.
+```sh
+python scripts/combine_csv.py humidityrelative
+python scripts/combine_csv.py humidityspecific
+python scripts/combine_csv.py precipitation
+python scripts/combine_csv.py shortwavenet
+python scripts/combine_csv.py temperature
+python scripts/combine_csv.py windspeed
+```
+
+After that, you'll get a single CSV file for each metrics, namely `humidityrelative_tab_all.csv` directly under `data/` directory.
+
+---
 
 Built with ❤️ by [bhaskoro-muthohar](https://github.com/bhaskoro-muthohar)
 
@@ -51,3 +81,5 @@ This package was created with Cookiecutter and the `gerardrbentley/cookiecutter-
 
 - Cookiecutter: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
 - `gerardrbentley/cookiecutter-streamlit`: [https://github.com/gerardrbentley/cookiecutter-streamlit](https://github.com/gerardrbentley/cookiecutter-streamlit)
+- [TODO] Credits to Open Data Jabar
+- [TODO] Credits to Giovanni
