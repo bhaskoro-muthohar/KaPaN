@@ -35,12 +35,21 @@ def app():
     # Plotting multiple line charts for each climatic criterion with extreme marks
     st.markdown('## Climatic Data Line Charts')
 
-    line_chart_cols = st.columns(3)
+    n_col = 2
+    line_chart_cols = st.columns(n_col)
 
     # Use enumerate to get the index and the criterion
     for i, criterion in enumerate(climatic_criteria):
-        with line_chart_cols[i % 3]:
+        with line_chart_cols[i % n_col]:
             fig = px.line(filtered_data, x='date', y=criterion, title=f'{criterion.capitalize()} Over Time for {selected_subdistrict}')
+            fig.update_layout(legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1
+            ))
+
             # Add extreme points
             for mark_type in ['above', 'below']:
                 extreme_points = filtered_data[filtered_data[f'{criterion}_extreme_mark'] == mark_type]
@@ -61,9 +70,9 @@ def app():
 
     # Create columns for map charts
     st.markdown('### Climatic Maps')
-    cols = st.columns(3)
+    cols = st.columns(n_col)
     for i, criterion in enumerate(climatic_criteria):
-        with cols[i % 3]:
+        with cols[i % n_col]:
             if not selected_data.empty:
                 fig_map = px.scatter_geo(
                     selected_data,
@@ -74,6 +83,12 @@ def app():
                     projection='natural earth',
                     title=f"{criterion.capitalize()} Data on {selected_date}"
                 )
+                fig.update_layout(coloraxis_colorbar=dict(
+                    len=0.5,
+                    xanchor="right", x=0.1,
+                    yanchor='bottom', y=0.1,
+                    thickness=10,
+                ))
                 # Update map geos
                 fig_map.update_geos(
                     visible=True,
