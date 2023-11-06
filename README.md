@@ -2,6 +2,9 @@
 
 [TBD] Kalender Padi Nusantara
 
+## Requirements
+All required libraries and packages are listed in `requirements.txt`.
+
 ## Data Pre-processing
 
 ### Data Sources
@@ -38,34 +41,9 @@ Run following command to get file `data/district_feature_with_extreme_mark.csv` 
 python scripts/mark_extremes.py
 ```
 
-## Credits
+## Running App
 
-This package was created with Cookiecutter and the `gerardrbentley/cookiecutter-streamlit` project template.
-- Cookiecutter: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
-- `gerardrbentley/cookiecutter-streamlit`: [https://github.com/gerardrbentley/cookiecutter-streamlit](https://github.com/gerardrbentley/cookiecutter-streamlit)
-- Open Data Jabar, Accessed: November 4th, 2023.
-- AIRS project (2019), Aqua/AIRS L3 Daily Standard Physical Retrieval (AIRS-only) 1 degree x 1 degree V7.0, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/UO3Q64CTTS1U
-- Global Modeling and Assimilation Office (GMAO) (2015), MERRA-2 instM_2d_lfo_Nx: 2d,Monthly mean,Instantaneous,Single-Level,Assimilation,Land Surface Forcings V5.12.4, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/11F99Y6TXN99
-- Huffman, G.J., E.F. Stocker, D.T. Bolvin, E.J. Nelkin, Jackson Tan (2019), GPM IMERG Early Precipitation L3 1 day 0.1 degree x 0.1 degree V06, Edited by Andrey Savtchenko, Greenbelt, MD, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 3th, 2023, 10.5067/GPM/IMERGDE/DAY/06
-- Jossy Jacob, Kimberly Slinksi (NASA/GSFC/HSL) (2021), FLDAS Noah Land Surface Model L4 Global Monthly 0.1 x 0.1 degree (GDAS and CHIRPS-PRELIM), Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/L8GPRQWAWHE3
-- Li, B., H. Beaudoing, and M. Rodell, NASA/GSFC/HSL (2020), GLDAS Catchment Land Surface Model L4 daily 0.25 x 0.25 degree GRACE-DA1 V2.2, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/TXBMLX370XX8
-
----
-
-Built with ❤️ by team 4SKA1 for UN Data Hackathon 2023.
-Members:
-- [Bhaskoro Muthohar](https://github.com/bhaskoro-muthohar)
-- [Bagoes Rahmat Widiarso](https://github.com/zeogabrw)
-- [Figarri Keisha](https://github.com/kfigarri)
-- [Nashir Muhammad](https://github.com/nashr)
-
----
-
-## What's this?
-
-- `requirements.txt`: Pins the version of packages needed
-
-## Local Setup
+### Local Setup
 
 Assumes working python installation and some command line knowledge ([install python with conda guide](https://tech.gerardbentley.com/python/beginner/2022/01/29/install-python.html)).
 
@@ -91,8 +69,30 @@ streamlit run streamlit_app.py
 ```
 
 Open your browser to [http://localhost:8501/](http://localhost:8501/) if it doesn't open automatically.
-## Deploy
+
+### Deploy
 
 For the easiest experience, deploy to [Streamlit Cloud](https://streamlit.io/cloud)
-
 For other options, see [Streamilt deployment wiki](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099)
+
+## Credits
+
+This package was created with Cookiecutter and the `gerardrbentley/cookiecutter-streamlit` project template.
+- Cookiecutter: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
+- `gerardrbentley/cookiecutter-streamlit`: [https://github.com/gerardrbentley/cookiecutter-streamlit](https://github.com/gerardrbentley/cookiecutter-streamlit)
+- Open Data Jabar, Accessed: November 4th, 2023.
+- AIRS project (2019), Aqua/AIRS L3 Daily Standard Physical Retrieval (AIRS-only) 1 degree x 1 degree V7.0, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/UO3Q64CTTS1U
+- Global Modeling and Assimilation Office (GMAO) (2015), MERRA-2 instM_2d_lfo_Nx: 2d,Monthly mean,Instantaneous,Single-Level,Assimilation,Land Surface Forcings V5.12.4, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/11F99Y6TXN99
+- Huffman, G.J., E.F. Stocker, D.T. Bolvin, E.J. Nelkin, Jackson Tan (2019), GPM IMERG Early Precipitation L3 1 day 0.1 degree x 0.1 degree V06, Edited by Andrey Savtchenko, Greenbelt, MD, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 3th, 2023, 10.5067/GPM/IMERGDE/DAY/06
+- Jossy Jacob, Kimberly Slinksi (NASA/GSFC/HSL) (2021), FLDAS Noah Land Surface Model L4 Global Monthly 0.1 x 0.1 degree (GDAS and CHIRPS-PRELIM), Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/L8GPRQWAWHE3
+- Li, B., H. Beaudoing, and M. Rodell, NASA/GSFC/HSL (2020), GLDAS Catchment Land Surface Model L4 daily 0.25 x 0.25 degree GRACE-DA1 V2.2, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/TXBMLX370XX8
+
+---
+
+Built with ❤️ by team 4SKA1 for UN Data Hackathon 2023.
+
+Members:
+- [Bhaskoro Muthohar](https://github.com/bhaskoro-muthohar)
+- [Bagoes Rahmat Widiarso](https://github.com/zeogabrw)
+- [Figarri Keisha](https://github.com/kfigarri)
+- [Nashir Muhammad](https://github.com/nashr)
