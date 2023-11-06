@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
 
-def q25(x):
-  return x.quantile(0.25)
+def lower_bound(x):
+  return x.quantile(0.25) - 1.5 * (x.quantile(0.75) - x.quantile(0.25))
 
-def q75(x):
-  return x.quantile(0.75)
+def upper_bound(x):
+  return x.quantile(0.75) + 1.5 * (x.quantile(0.75) - x.quantile(0.25))
 
 data_dir = "data/"
 filename_input = "district_feature.csv"
@@ -14,11 +14,11 @@ filename_output = "district_feature_with_extreme_mark.csv"
 df = pd.read_csv(data_dir + filename_input)
 
 df_q = df.groupby("bps_kecamatan_kode").agg({
-  "humidity": [q25, q75],
-  "precipitation": [q25, q75],
-  "windspeed": [q25, q75],
-  "temperature": [q25, q75],
-  "shortwavenet": [q25, q75],
+  "humidity": [lower_bound, upper_bound],
+  "precipitation": [lower_bound, upper_bound],
+  "windspeed": [lower_bound, upper_bound],
+  "temperature": [lower_bound, upper_bound],
+  "shortwavenet": [lower_bound, upper_bound],
 })
 df_q = df_q.reset_index()
 
@@ -37,50 +37,50 @@ df = pd.merge(
 )
 
 df["humidity_extreme_mark"] = np.where(
-  df["humidity"] < df["humidity_q25"],
+  df["humidity"] < df["humidity_lower_bound"],
   "below",
   np.where(
-    df["humidity"] > df["humidity_q75"],
+    df["humidity"] > df["humidity_upper_bound"],
     "above",
     "normal"
   )
 )
 
 df["precipitation_extreme_mark"] = np.where(
-  df["precipitation"] < df["precipitation_q25"],
+  df["precipitation"] < df["precipitation_lower_bound"],
   "below",
   np.where(
-    df["precipitation"] > df["precipitation_q75"],
+    df["precipitation"] > df["precipitation_upper_bound"],
     "above",
     "normal"
   )
 )
 
 df["windspeed_extreme_mark"] = np.where(
-  df["windspeed"] < df["windspeed_q25"],
+  df["windspeed"] < df["windspeed_lower_bound"],
   "below",
   np.where(
-    df["windspeed"] > df["windspeed_q75"],
+    df["windspeed"] > df["windspeed_upper_bound"],
     "above",
     "normal"
   )
 )
 
 df["temperature_extreme_mark"] = np.where(
-  df["temperature"] < df["temperature_q25"],
+  df["temperature"] < df["temperature_lower_bound"],
   "below",
   np.where(
-    df["temperature"] > df["temperature_q75"],
+    df["temperature"] > df["temperature_upper_bound"],
     "above",
     "normal"
   )
 )
 
 df["shortwavenet_extreme_mark"] = np.where(
-  df["shortwavenet"] < df["shortwavenet_q25"],
+  df["shortwavenet"] < df["shortwavenet_lower_bound"],
   "below",
   np.where(
-    df["shortwavenet"] > df["shortwavenet_q75"],
+    df["shortwavenet"] > df["shortwavenet_upper_bound"],
     "above",
     "normal"
   )
