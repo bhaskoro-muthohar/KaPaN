@@ -83,12 +83,12 @@ def app():
                     projection='natural earth',
                     title=f"{criterion.capitalize()} Data on {selected_date}"
                 )
-                fig.update_layout(coloraxis_colorbar=dict(
-                    len=0.5,
-                    xanchor="right", x=0.1,
-                    yanchor='bottom', y=0.1,
-                    thickness=10,
-                ))
+                # fig.update_layout(coloraxis_colorbar=dict(
+                #     len=0.5,
+                #     xanchor="right", x=0.1,
+                #     yanchor='bottom', y=0.1,
+                #     thickness=10,
+                # ))
                 # Update map geos
                 fig_map.update_geos(
                     visible=True,
