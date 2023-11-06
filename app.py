@@ -15,6 +15,7 @@ st.set_page_config(
 #     st.sidebar.title("Navigation")
 #     pages = {
 #         "Home": home.app,
+#         "Extreme Climate Prediction": extreme_climate_pred.app,
 #         "Submit Form": submit_form.app,
 #     }
     
@@ -23,7 +24,7 @@ st.set_page_config(
 #     pages[selection]()
 
 # if __name__ == "__main__":
-#     from pages import home, submit_form
+#     from pages import home, submit_form, extreme_climate_pred
 #     main()
 
 st.title('Welcome to KaPaN')
