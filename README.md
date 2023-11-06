@@ -63,12 +63,7 @@ Members:
 
 ## What's this?
 
-- `README.md`: This Document! To help you find your way around
-- `streamlit_app.py`: The main app that gets run by [`streamlit`](https://docs.streamlit.io/)
 - `requirements.txt`: Pins the version of packages needed
-- `LICENSE`: Follows Streamlit's use of Apache 2.0 Open Source License
-- `.gitignore`: Tells git to avoid comitting / scanning certain local-specific files
-- `.streamlit/config.toml`: Customizes the behaviour of streamlit without specifying command line arguments (`streamlit config show`)
 
 ## Local Setup
 
