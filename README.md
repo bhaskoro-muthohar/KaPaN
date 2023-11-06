@@ -8,6 +8,8 @@
 All raw data are available under `data/` directory, grouped by the source name. Everything under `data/giovanni` is downloaded from [Giovanni](https://giovanni.gsfc.nasa.gov/), everything under `data/opendatajabar` is from [Open Data Jabar](https://opendata.jabarprov.go.id/), etc.
 
 ### Pre-processing Raw Data
+
+#### Extracting Raw Data
 Run following commands in console/terminal.
 ```sh
 python scripts/convert_nc_to_csv.py humidityrelative
@@ -30,9 +32,34 @@ python scripts/combine_csv.py windspeed
 
 After that, you'll get a single CSV file for each metrics, namely `humidityrelative_tab_all.csv` directly under `data/` directory.
 
+#### Labeling Extreme Weather in Raw Data
+Run following command to get file `data/district_feature_with_extreme_mark.csv` from which the website read data to visualize.
+```sh
+python scripts/mark_extremes.py
+```
+
+## Credits
+
+This package was created with Cookiecutter and the `gerardrbentley/cookiecutter-streamlit` project template.
+- Cookiecutter: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
+- `gerardrbentley/cookiecutter-streamlit`: [https://github.com/gerardrbentley/cookiecutter-streamlit](https://github.com/gerardrbentley/cookiecutter-streamlit)
+- Open Data Jabar, Accessed: November 4th, 2023.
+- AIRS project (2019), Aqua/AIRS L3 Daily Standard Physical Retrieval (AIRS-only) 1 degree x 1 degree V7.0, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/UO3Q64CTTS1U
+- Global Modeling and Assimilation Office (GMAO) (2015), MERRA-2 instM_2d_lfo_Nx: 2d,Monthly mean,Instantaneous,Single-Level,Assimilation,Land Surface Forcings V5.12.4, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/11F99Y6TXN99
+- Huffman, G.J., E.F. Stocker, D.T. Bolvin, E.J. Nelkin, Jackson Tan (2019), GPM IMERG Early Precipitation L3 1 day 0.1 degree x 0.1 degree V06, Edited by Andrey Savtchenko, Greenbelt, MD, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 3th, 2023, 10.5067/GPM/IMERGDE/DAY/06
+- Jossy Jacob, Kimberly Slinksi (NASA/GSFC/HSL) (2021), FLDAS Noah Land Surface Model L4 Global Monthly 0.1 x 0.1 degree (GDAS and CHIRPS-PRELIM), Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/L8GPRQWAWHE3
+- Li, B., H. Beaudoing, and M. Rodell, NASA/GSFC/HSL (2020), GLDAS Catchment Land Surface Model L4 daily 0.25 x 0.25 degree GRACE-DA1 V2.2, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/TXBMLX370XX8
+
 ---
 
-Built with ❤️ by [bhaskoro-muthohar](https://github.com/bhaskoro-muthohar)
+Built with ❤️ by team 4SKA1 for UN Data Hackathon 2023.
+Members:
+- [Bhaskoro Muthohar](https://github.com/bhaskoro-muthohar)
+- [Bagoes Rahmat Widiarso](https://github.com/zeogabrw)
+- [Figarri Keisha](https://github.com/kfigarri)
+- [Nashir Muhammad](https://github.com/nashr)
+
+---
 
 ## What's this?
 
@@ -74,12 +101,3 @@ Open your browser to [http://localhost:8501/](http://localhost:8501/) if it does
 For the easiest experience, deploy to [Streamlit Cloud](https://streamlit.io/cloud)
 
 For other options, see [Streamilt deployment wiki](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099)
-
-## Credits
-
-This package was created with Cookiecutter and the `gerardrbentley/cookiecutter-streamlit` project template.
-
-- Cookiecutter: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
-- `gerardrbentley/cookiecutter-streamlit`: [https://github.com/gerardrbentley/cookiecutter-streamlit](https://github.com/gerardrbentley/cookiecutter-streamlit)
-- [TODO] Credits to Open Data Jabar
-- [TODO] Credits to Giovanni
