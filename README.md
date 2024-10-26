@@ -1,20 +1,83 @@
-# [TBD] KaPaN
+# KaPaN (Kalender Padi Nusantara)
 
-[TBD] Kalender Padi Nusantara
+[![Built with ❤️ by team 4SKA1](https://img.shields.io/badge/Built%20with%20%E2%9D%A4%EF%B8%8F-by%20team%204SKA1-red)](https://github.com/bhaskoro-muthohar/kapan)
+[![UN Data Hackathon Winner](https://img.shields.io/badge/UN%20Datathon%202023-Asia%20Region%20Winner-gold)](https://drive.google.com/drive/folders/1NnulzX_Ks9JgqXNSTpLsTdTjq2gWKH2z)
 
-## Requirements
-All required libraries and packages are listed in `requirements.txt`.
+> 🏆 **Award-Winning Data Analysis Project for the 2023 UN Datathon**  
+> Developed award-winning data-driven Python application; recognized as best team in Asian region.  
+> [View Certificate](https://drive.google.com/drive/folders/1NnulzX_Ks9JgqXNSTpLsTdTjq2gWKH2z)
 
-## Data Pre-processing
+KaPaN (Kalender Padi Nusantara) is an award-winning project developed for the UN Data Hackathon 2023, focusing on agricultural data analysis and visualization in Indonesia. Our innovative approach to agricultural data analysis earned us recognition as the best team in the Asian region.
 
-### Data Sources
-All raw data are available under `data/` directory, grouped by the source name. Everything under `data/giovanni` is downloaded from [Giovanni](https://giovanni.gsfc.nasa.gov/), everything under `data/opendatajabar` is from [Open Data Jabar](https://opendata.jabarprov.go.id/), etc.
+## 📋 Table of Contents
+- [Awards](#awards)
+- [Features](#features)
+- [Installation](#installation)
+- [Data Processing](#data-processing)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Contributors](#contributors)
+- [Data Sources](#data-sources)
 
-### Pre-processing Raw Data
+## 🏆 Awards
+- **UN Datathon 2023 - Asian Region Winner**
+  - Recognized for excellence in data-driven agricultural analysis
+  - Developed innovative Python application for agricultural planning
+  - [View Certificate](https://drive.google.com/drive/folders/1NnulzX_Ks9JgqXNSTpLsTdTjq2gWKH2z)
 
-#### Extracting Raw Data
-Run following commands in console/terminal.
-```sh
+## 🚀 Features
+- Real-time weather data visualization
+- Extreme weather pattern detection
+- Agricultural calendar recommendations
+- Interactive district-level data exploration
+- Data-driven agricultural planning insights
+- Advanced weather pattern analysis
+
+## 💻 Installation
+
+### Prerequisites
+- Python 3.x
+- Git
+
+### Local Setup
+
+1. Clone the repository
+```bash
+git clone git@github.com:bhaskoro-muthohar/kapan.git
+cd kapan
+```
+
+2. Create and activate virtual environment
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# For Unix/macOS
+source venv/bin/activate
+# For Windows
+.\venv\Scripts\activate
+```
+
+3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+## 🔄 Data Processing
+
+### Data Directory Structure
+```
+data/
+├── giovanni/
+├── opendatajabar/
+└── processed/
+```
+
+### Processing Steps
+
+1. Extract raw data from NetCDF files to CSV:
+```bash
 python scripts/convert_nc_to_csv.py humidityrelative
 python scripts/convert_nc_to_csv.py humidityspecific
 python scripts/convert_nc_to_csv.py precipitation
@@ -23,8 +86,8 @@ python scripts/convert_nc_to_csv.py temperature
 python scripts/convert_nc_to_csv.py windspeed
 ```
 
-There will be a series of CSV files generated in each respective metrics directory, something like `humidityrelative_tab_20220701.csv`. After that, combining all those CSV files can done by running following commands.
-```sh
+2. Combine CSV files by metric:
+```bash
 python scripts/combine_csv.py humidityrelative
 python scripts/combine_csv.py humidityspecific
 python scripts/combine_csv.py precipitation
@@ -33,68 +96,72 @@ python scripts/combine_csv.py temperature
 python scripts/combine_csv.py windspeed
 ```
 
-After that, you'll get a single CSV file for each metrics, namely `humidityrelative_tab_all.csv` directly under `data/` directory.
-
-#### Labeling Extreme Weather in Raw Data
-Run following command to get file `data/district_feature_with_extreme_mark.csv` from which the website read data to visualize.
-```sh
+3. Generate extreme weather markers:
+```bash
 python scripts/mark_extremes.py
 ```
 
-## Running App
+## 🖥️ Usage
 
-### Local Setup
-
-Assumes working python installation and some command line knowledge ([install python with conda guide](https://tech.gerardbentley.com/python/beginner/2022/01/29/install-python.html)).
-
-```sh
-# External users: download Files
-git clone git@github.com:bhaskoro-muthohar/kapan.git
-
-# Go to correct directory
-cd kapan
-
-# Create virtual environment for this project
-python -m venv venv
-
-# Activate the virtual environment
-. ./venv/bin/activate
-# .\venv\Scripts\activate for Windows
-
-# Install required Packages
-python -m pip install -r requirements.txt
-
-# Run the streamlit app
+Run the Streamlit application:
+```bash
 streamlit run streamlit_app.py
 ```
 
-Open your browser to [http://localhost:8501/](http://localhost:8501/) if it doesn't open automatically.
+The application will be available at [http://localhost:8501/](http://localhost:8501/)
 
-### Deploy
+## 🚀 Deployment
 
-For the easiest experience, deploy to [Streamlit Cloud](https://streamlit.io/cloud)
-For other options, see [Streamilt deployment wiki](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099)
+### Streamlit Cloud (Recommended)
+Deploy directly to [Streamlit Cloud](https://streamlit.io/cloud) for the easiest setup.
 
-## Credits
+For alternative deployment options, refer to the [Streamlit deployment wiki](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099).
 
-This package was created with Cookiecutter and the `gerardrbentley/cookiecutter-streamlit` project template.
-- Cookiecutter: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
-- `gerardrbentley/cookiecutter-streamlit`: [https://github.com/gerardrbentley/cookiecutter-streamlit](https://github.com/gerardrbentley/cookiecutter-streamlit)
+## 👥 Contributors
 
-### Datasets
-- Open Data Jabar, Accessed: November 4th, 2023.
-- AIRS project (2019), Aqua/AIRS L3 Daily Standard Physical Retrieval (AIRS-only) 1 degree x 1 degree V7.0, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/UO3Q64CTTS1U
-- Global Modeling and Assimilation Office (GMAO) (2015), MERRA-2 instM_2d_lfo_Nx: 2d,Monthly mean,Instantaneous,Single-Level,Assimilation,Land Surface Forcings V5.12.4, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/11F99Y6TXN99
-- Huffman, G.J., E.F. Stocker, D.T. Bolvin, E.J. Nelkin, Jackson Tan (2019), GPM IMERG Early Precipitation L3 1 day 0.1 degree x 0.1 degree V06, Edited by Andrey Savtchenko, Greenbelt, MD, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 3th, 2023, 10.5067/GPM/IMERGDE/DAY/06
-- Jossy Jacob, Kimberly Slinksi (NASA/GSFC/HSL) (2021), FLDAS Noah Land Surface Model L4 Global Monthly 0.1 x 0.1 degree (GDAS and CHIRPS-PRELIM), Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/L8GPRQWAWHE3
-- Li, B., H. Beaudoing, and M. Rodell, NASA/GSFC/HSL (2020), GLDAS Catchment Land Surface Model L4 daily 0.25 x 0.25 degree GRACE-DA1 V2.2, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: November 4th, 2023, 10.5067/TXBMLX370XX8
-
----
-
-Built with ❤️ by team 4SKA1 for UN Data Hackathon 2023.
-
-Members:
+Team 4SKA1:
 - [Bhaskoro Muthohar](https://github.com/bhaskoro-muthohar)
 - [Bagoes Rahmat Widiarso](https://github.com/zeogabrw)
 - [Figarri Keisha](https://github.com/kfigarri)
 - [Nashir Muhammad](https://github.com/nashr)
+
+## 📊 Data Sources
+
+This project utilizes data from various sources:
+
+- **Open Data Jabar**
+  - Accessed: November 4th, 2023
+  - Source: [Open Data Jabar](https://opendata.jabarprov.go.id/)
+
+- **NASA/AIRS Project**
+  - Dataset: Aqua/AIRS L3 Daily Standard Physical Retrieval (AIRS-only)
+  - Version: V7.0
+  - DOI: 10.5067/UO3Q64CTTS1U
+
+- **Global Modeling and Assimilation Office (GMAO)**
+  - Dataset: MERRA-2 instM_2d_lfo_Nx
+  - Version: V5.12.4
+  - DOI: 10.5067/11F99Y6TXN99
+
+- **GPM IMERG**
+  - Dataset: Early Precipitation L3
+  - Version: V06
+  - DOI: 10.5067/GPM/IMERGDE/DAY/06
+
+- **FLDAS Noah Land Surface Model**
+  - Version: GDAS and CHIRPS-PRELIM
+  - DOI: 10.5067/L8GPRQWAWHE3
+
+- **GLDAS Catchment Land Surface Model**
+  - Version: V2.2
+  - DOI: 10.5067/TXBMLX370XX8
+
+## 🙏 Acknowledgments
+
+This package was created with:
+- [Cookiecutter](https://github.com/audreyr/cookiecutter)
+- [cookiecutter-streamlit template](https://github.com/gerardrbentley/cookiecutter-streamlit)
+
+---
+
+[![UN Data Hackathon 2023 Winner](https://img.shields.io/badge/UN%20Datathon%202023-Asia%20Region%20Winner-gold)](https://drive.google.com/drive/folders/1NnulzX_Ks9JgqXNSTpLsTdTjq2gWKH2z)
